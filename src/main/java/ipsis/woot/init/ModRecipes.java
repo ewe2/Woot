@@ -9,7 +9,6 @@ import ipsis.woot.item.ItemFactoryUpgrade;
 import ipsis.woot.item.ItemShard;
 import ipsis.woot.item.ItemSkull;
 import ipsis.woot.manager.EnumSpawnerUpgrade;
-import ipsis.woot.plugins.bloodmagic.BloodMagic;
 import ipsis.woot.tileentity.multiblock.EnumMobFactoryModule;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentData;
@@ -37,9 +36,6 @@ public class ModRecipes {
                 new ShapelessOreRecipe(ModItems.itemManual, Items.BOOK, ModOreDictionary.ORE_DICT_SKULL));
 
         initRecipesCompat();
-
-        if (Loader.isModLoaded(BloodMagic.BM_MODID))
-            BloodMagic.initRecipes();
     }
 
     private static void initToolRecipes() {

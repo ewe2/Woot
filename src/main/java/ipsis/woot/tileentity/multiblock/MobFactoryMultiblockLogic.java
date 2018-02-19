@@ -144,7 +144,7 @@ public class MobFactoryMultiblockLogic {
             factorySetup.size = tier;
         }
 
-        EnumFacing f = factory.getWorld().getBlockState(factory.getPos()).getValue(BlockMobFactory.FACING);
+        EnumFacing f = factory.getWorld().getBlockState(factory.getPos()).getValue(BlockMobFactory.PROPERTYFACING);
         for (MobFactoryModule s : factorySetup.size.structureModules) {
 
             BlockPos p = BlockPosHelper.rotateFromSouth(s.getOffset(), f.getOpposite());
@@ -207,7 +207,7 @@ public class MobFactoryMultiblockLogic {
             module = EnumMobFactoryModule.BLOCK_5;
         }
 
-        EnumFacing f = factory.getWorld().getBlockState(factory.getPos()).getValue(BlockMobFactory.FACING);
+        EnumFacing f = factory.getWorld().getBlockState(factory.getPos()).getValue(BlockMobFactory.PROPERTYFACING);
         pos = BlockPosHelper.rotateFromSouth(pos, f.getOpposite());
         pos = factory.getPos().add(pos.getX(), pos.getY(), pos.getZ());
 

@@ -5,7 +5,11 @@ import ipsis.woot.block.BlockMobFactory;
 import ipsis.woot.init.ModItems;
 import ipsis.woot.item.ItemXpShard;
 import ipsis.woot.manager.*;
+<<<<<<< HEAD
+import ipsis.woot.plugins.bloodmagic.BloodMagic;
+=======
 import ipsis.woot.oss.LogHelper;
+>>>>>>> 1423770b973dedea7f5c11c3c11a7eb04f729da2
 import ipsis.woot.reference.Settings;
 import ipsis.woot.tileentity.multiblock.EnumMobFactoryTier;
 import ipsis.woot.tileentity.multiblock.MobFactoryMultiblockLogic;
@@ -291,7 +295,11 @@ public class TileEntityMobFactory extends TileEntity implements ITickable {
     void upgradeTierX(BlockPos[] upgradePos, int maxTier) {
 
         List<SpawnerUpgrade> tmpUpgradeList = new ArrayList<SpawnerUpgrade>();
+<<<<<<< HEAD
+        EnumFacing f = world.getBlockState(pos).getValue(BlockMobFactory.FACING);
+=======
         EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.PROPERTYFACING);
+>>>>>>> 1423770b973dedea7f5c11c3c11a7eb04f729da2
         for (BlockPos p : upgradePos) {
 
             BlockPos offset = BlockPosHelper.rotateFromSouth(p, f.getOpposite());
@@ -454,6 +462,86 @@ public class TileEntityMobFactory extends TileEntity implements ITickable {
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * If there is a tank then it takes priority
+     * Else we store the number of mobs for the ritual to pickup
+     * /
+     */
+    private boolean bmUseTanks(int mobCount) {
+
+        if (!bmKeepAlive || BloodMagic.fluidOutput == null)
+            return false;
+
+        List<IFluidHandler> validHandlers = new ArrayList<>();
+        EnumFacing f = world.getBlockState(pos).getValue(BlockMobFactory.FACING);
+        if (world.isBlockLoaded(this.getPos().offset(f))) {
+            TileEntity te = world.getTileEntity(this.getPos().offset(f));
+            if (te != null && te.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f.getOpposite()))
+                validHandlers.add(te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f.getOpposite()));
+        }
+
+        // Proxy
+        validHandlers.addAll(proxyManager.getIFluidHandlers());
+
+        if (validHandlers.isEmpty())
+            return false;
+
+        /**
+         * sacrificalDaggerCall(20, true) WOSuffering
+         *
+         * (1 + sacrificeEfficiencyMultiplier) * 20
+         * sacrificeEfficiencyMultiplier = 0.10 * sacrifice rune count
+         */
+
+        int upgradeSacrificeCount = UpgradeManager.getSpawnerUpgrade(upgradeSetup.getBmUpgrade()).getSacrificeCount();
+        float sacrificeEfficiencyMultiplier = (float)(0.10 * upgradeSacrificeCount);
+
+        int amount = ((int)((1 + sacrificeEfficiencyMultiplier) * 20)) * mobCount;
+
+        FluidStack out = new FluidStack(BloodMagic.fluidOutput, amount);
+        for (IFluidHandler hdlr : validHandlers) {
+
+            if (out.amount == 0)
+                break;
+
+            int result = hdlr.fill(out, true);
+            out.amount = out.amount - result;
+            if (out.amount < 0)
+                out.amount = 0;
+        }
+
+        return true;
+    }
+
+    private void bmUseRitual(int mobCount, int sacrificeAmount) {
+
+        bmKeepAlive = false;
+        bmMobCount = mobCount;
+        bmSacrificeAmount = sacrificeAmount;
+    }
+
+    private void bmOutput(UpgradeSetup upgradeSetup) {
+
+        if (!upgradeSetup.hasBmUpgrade()) {
+            bmClear();
+            return;
+        }
+
+        int mobCount = Settings.Spawner.DEF_BASE_MOB_COUNT;
+        if (upgradeSetup.hasMassUpgrade())
+            mobCount = UpgradeManager.getSpawnerUpgrade(upgradeSetup.getMassUpgrade()).getMass();
+
+        // Scale with the upgrades
+        int sacrificeAmount = UpgradeManager.getSpawnerUpgrade(upgradeSetup.getBmUpgrade()).getAltarLifeEssence();
+
+        if (!bmUseTanks(mobCount))
+            bmUseRitual(mobCount, sacrificeAmount);
+
+        bmKeepAlive = false;
+    }
+=======
+>>>>>>> 1423770b973dedea7f5c11c3c11a7eb04f729da2
 
     private void produceOutput() {
 
@@ -462,9 +550,15 @@ public class TileEntityMobFactory extends TileEntity implements ITickable {
         List<IItemHandler> validHandlers = new ArrayList<>();
 
         // Original position
+<<<<<<< HEAD
+        EnumFacing f = world.getBlockState(pos).getValue(BlockMobFactory.FACING);
+        if (world.isBlockLoaded(this.getPos().offset(f))) {
+            TileEntity te = world.getTileEntity(this.getPos().offset(f));
+=======
         EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.PROPERTYFACING);
         if (worldObj.isBlockLoaded(this.getPos().offset(f))) {
             TileEntity te = worldObj.getTileEntity(this.getPos().offset(f));
+>>>>>>> 1423770b973dedea7f5c11c3c11a7eb04f729da2
             if (te != null && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f.getOpposite()))
                 validHandlers.add(te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f.getOpposite()));
         }

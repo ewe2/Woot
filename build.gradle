@@ -33,10 +33,6 @@ repositories {
         name 'tterrag maven'
         url "http://maven.tterrag.com/"
     }
-    maven { // BloodMagic
-        name 'Tehnut Maven'
-        url "http://tehnut.info/maven/"
-    }
 }
 
 // Properties file
@@ -77,6 +73,12 @@ dependencies {
     deobfCompile "mcjty.theoneprobe:TheOneProbe:${config.top_version}"
     // deobfCompile "com.wayoftime.bloodmagic:BloodMagic:${config.bm_version}"
 }
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
 
 processResources
 {

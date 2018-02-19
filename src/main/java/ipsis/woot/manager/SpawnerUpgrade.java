@@ -167,13 +167,6 @@ public class SpawnerUpgrade {
                 upgradeType == EnumSpawnerUpgrade.EFFICIENCY_III;
     }
 
-    public boolean isBloodMagic() {
-
-        return upgradeType == EnumSpawnerUpgrade.BLOODMAGIC_I ||
-                upgradeType == EnumSpawnerUpgrade.BLOODMAGIC_II ||
-                upgradeType == EnumSpawnerUpgrade.BLOODMAGIC_III;
-    }
-
     public int getUpgradeTier() {
 
         int tier;
@@ -184,7 +177,6 @@ public class SpawnerUpgrade {
             case MASS_I:
             case DECAPITATE_I:
             case EFFICIENCY_I:
-            case BLOODMAGIC_I:
                 tier = 1;
                 break;
             case LOOTING_II:
@@ -193,7 +185,6 @@ public class SpawnerUpgrade {
             case MASS_II:
             case DECAPITATE_II:
             case EFFICIENCY_II:
-            case BLOODMAGIC_II:
                 tier = 2;
                 break;
             case LOOTING_III:
@@ -202,7 +193,6 @@ public class SpawnerUpgrade {
             case MASS_III:
             case DECAPITATE_III:
             case EFFICIENCY_III:
-            case BLOODMAGIC_III:
                 tier = 3;
                 break;
             default:

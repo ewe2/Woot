@@ -39,6 +39,18 @@ public class BookManager {
         addEntry("upgrade_decapitate", new BookPageText("upgrade_decapitate.0"));
         addEntry("upgrade_efficiency", new BookPageText("upgrade_efficiency.0"));
         addEntry("enchant_decapitate", new BookPageText("enchant_decapitate.0"));
+<<<<<<< HEAD
+
+        if (Loader.isModLoaded(BloodMagic.BM_MODID))
+            addEntry("upgrade_bloodmagic",
+                    new BookPageText("upgrade_bloodmagic.0"),
+                    new BookPageText("upgrade_bloodmagic.1"),
+                    new BookPageText("upgrade_bloodmagic.2"),
+                    new BookPageText("upgrade_bloodmagic.3"),
+                    new BookPageText("upgrade_bloodmagic.4"));
+        
+=======
+>>>>>>> 1423770b973dedea7f5c11c3c11a7eb04f729da2
         addEntry("blacklists", new BookPageText("blacklists.0"), new BookPageText("blacklists.1"));
     }
 

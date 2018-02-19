@@ -23,10 +23,7 @@ public enum EnumSpawnerUpgrade implements IStringSerializable {
     DECAPITATE_III,
     EFFICIENCY_I,
     EFFICIENCY_II,
-    EFFICIENCY_III,
-    BLOODMAGIC_I,
-    BLOODMAGIC_II,
-    BLOODMAGIC_III;
+    EFFICIENCY_III;
 
     public int getMetadata() {
 
