@@ -33,10 +33,6 @@ repositories {
         name 'tterrag maven'
         url "http://maven.tterrag.com/"
     }
-//    maven { // BloodMagic
-//        name 'Tehnut Maven'
-//        url "http://tehnut.info/maven/"
-//    }
 }
 
 // Properties file
@@ -75,8 +71,6 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
     deobfCompile "mezz.jei:jei_1.10.2:3.11.1.270"
     deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.1.5-37"
-//  remove blood magic it no longer builds
-//    deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.9.4-2.1.0-454-ss"
 }
 
 processResources

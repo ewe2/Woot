@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "woot:blocks/upgrade_bloodmagic_ii_active"
-  }
-}
