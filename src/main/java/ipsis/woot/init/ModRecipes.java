@@ -36,9 +36,6 @@ public class ModRecipes {
                 new ShapelessOreRecipe(ModItems.itemManual, Items.BOOK, ModOreDictionary.ORE_DICT_SKULL));
 
         initRecipesCompat();
-
-        if (Loader.isModLoaded(BloodMagic.BM_MODID))
-            BloodMagic.initRecipes();
     }
 
     private static void initToolRecipes() {
