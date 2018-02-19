@@ -73,6 +73,12 @@ dependencies {
     deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.1.5-37"
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+
 processResources
 {
     // this will ensure that this task is redone when the versions change.

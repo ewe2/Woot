@@ -44,12 +44,12 @@ import java.util.List;
 public class BlockMobFactory extends BlockWoot implements ITooltipInfo, ITileEntityProvider, ITOPInfoProvider {
 
     public static final String BASENAME = "factory";
-    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     public BlockMobFactory() {
 
         super(Material.ROCK, BASENAME);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(PROPERTYFACING, EnumFacing.NORTH));
         setRegistryName(Reference.MOD_ID_LOWER, BASENAME);
     }
 
@@ -65,7 +65,7 @@ public class BlockMobFactory extends BlockWoot implements ITooltipInfo, ITileEnt
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 
         EnumFacing f = placer.getHorizontalFacing().getOpposite();
-        worldIn.setBlockState(pos, state.withProperty(FACING, f), 2);
+        worldIn.setBlockState(pos, state.withProperty(PROPERTYFACING, f), 2);
     }
 
     @Override
@@ -153,19 +153,19 @@ public class BlockMobFactory extends BlockWoot implements ITooltipInfo, ITileEnt
         if (enumfacing.getAxis() == EnumFacing.Axis.Y)
             enumfacing = EnumFacing.NORTH;
 
-        return this.getDefaultState().withProperty(FACING, enumfacing);
+        return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
     }
 
     public int getMetaFromState(IBlockState state)
     {
 
-        return state.getValue(FACING).getIndex();
+        return state.getValue(PROPERTYFACING).getIndex();
     }
 
     protected BlockStateContainer createBlockState()
     {
 
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, new IProperty[] {PROPERTYFACING});
     }
 
     @Override

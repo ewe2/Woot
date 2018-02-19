@@ -289,7 +289,7 @@ public class TileEntityMobFactory extends TileEntity implements ITickable, IEner
     void upgradeTierX(BlockPos[] upgradePos, int maxTier) {
 
         List<SpawnerUpgrade> tmpUpgradeList = new ArrayList<SpawnerUpgrade>();
-        EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.FACING);
+        EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.PROPERTYFACING);
         for (BlockPos p : upgradePos) {
 
             BlockPos offset = BlockPosHelper.rotateFromSouth(p, f.getOpposite());
@@ -460,7 +460,7 @@ public class TileEntityMobFactory extends TileEntity implements ITickable, IEner
         List<IItemHandler> validHandlers = new ArrayList<>();
 
         // Original position
-        EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.FACING);
+        EnumFacing f = worldObj.getBlockState(pos).getValue(BlockMobFactory.PROPERTYFACING);
         if (worldObj.isBlockLoaded(this.getPos().offset(f))) {
             TileEntity te = worldObj.getTileEntity(this.getPos().offset(f));
             if (te != null && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f.getOpposite()))
