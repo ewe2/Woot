@@ -99,6 +99,11 @@ processResources
     }
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
 jar {
     manifest {
         attributes 'FMLAT': 'woot_at.cfg'
